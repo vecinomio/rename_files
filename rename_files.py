@@ -5,8 +5,12 @@ def rename_files(folder_path):
 
     # I use sorted func, because listdir doesn't sort the files
     for file in sorted(os.listdir(folder_path)):
-        dst = "pict" + str(i) + ".jpeg" # Set name and extension
         src = folder_path + file
+        if os.stat(src).st_size > 5242880:
+            dst = "sportcar" + str(i) + ".mp4" # Set name and extension
+        else:
+            dst = "sportcar" + str(i) + ".jpg"
+            
         dst = folder_path + dst
 
         os.rename(src, dst) # rename file
